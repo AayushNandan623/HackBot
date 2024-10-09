@@ -13,7 +13,10 @@ This Discord bot scrapes data from **Unstop** and **Devfolio** to provide real-t
 
 ### Prerequisites
 
-- **Python** 
+- **Node.js** (v14+ recommended)
+- npm or yarn (for package management)
+- Discord Developer Account: To create a bot and get your bot token.
+- API access to Unstop and Devfolio (if available).
 
 ### Installation
 
