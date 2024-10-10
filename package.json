@@ -12,8 +12,4 @@
   "dependencies": {
     "puppeteer": "^23.5.1"
   }
-  ,
-    "type": "module",
-    "types": "module"
-  
 }

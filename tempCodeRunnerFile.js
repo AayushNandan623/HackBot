@@ -1,0 +1,1 @@
+const imgSrc = event.querySelector("img")?.getAttribute("src") || "No Image";

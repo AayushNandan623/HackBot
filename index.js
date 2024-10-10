@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+const puppeteer= require("puppeteer");
 
 const getQuotes = async () => {
   const browser = await puppeteer.launch({
@@ -12,29 +12,42 @@ const getQuotes = async () => {
     waitUntil: "domcontentloaded",
   });
 
-  await page.waitForSelector(".content", { timeout: 10000 }); 
+  await page.waitForSelector(".content", { timeout: 10000 });
 
   const data = await page.evaluate(() => {
     const dataList = document.querySelectorAll(".content");
 
     if (!dataList || dataList.length === 0) {
-      console.error("No user list found on the page.");
+      console.error("No event list found on the page.");
       return [];
     }
 
     return Array.from(dataList).map((event) => {
+   
+
       const title =
         event.querySelector(".double-wrap")?.innerText.trim() || "N/A";
+    if(title==="N/A"){
+        return {};
+    }
       const institution = event.querySelector("p")?.innerText.trim() || "N/A";
+    
+      const prizeElement = event.querySelector(".prize");
       const prize =
-        event
-          .querySelector(".prize")
-          ?.innerText.trim()
-          .replace(/[^\d,]/g, "") || "N/A";
-      const daysLeft =
-        event
-          .querySelector(".seperate_box.align-center:nth-of-type(3)")
-          ?.childNodes[1]?.textContent.trim() || "N/A";
+        prizeElement?.innerText.trim().replace(/[^\d,]/g, "") || "No prize";
+
+      const daysLeftElem = event.querySelectorAll(
+        ".seperate_box.align-center.ng-star-inserted"
+      );
+
+      let daysLeft = "Date not available";
+      if (daysLeftElem.length === 2) {
+
+        daysLeft = daysLeftElem[1]?.innerText.trim() || "Date not available";
+      } else if (daysLeftElem.length === 1) {
+
+        daysLeft = daysLeftElem[0]?.innerText.trim() || "Date not available";
+      }
 
       return { title, institution, prize, daysLeft };
     });
@@ -46,3 +59,4 @@ const getQuotes = async () => {
 };
 
 getQuotes();
+
