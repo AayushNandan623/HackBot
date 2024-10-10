@@ -12,8 +12,6 @@ const getCards = async () => {
     waitUntil: "networkidle2",
   });
 
-  await page.waitForSelector(".content", { timeout: 10000 });
-
   const data = await page.evaluate(() => {
     const dataList = document.querySelectorAll(".content");
 
