@@ -1,7 +1,7 @@
 {
   "name": "hackbot",
   "version": "1.0.0",
-  "description": "This Discord bot scrapes data from **Unstop** and **Devfolio** to provide real-time information about upcoming hackathons. The bot delivers the scraped information directly to a designated Discord channel, making it easier for users to stay updated on hackathon events.",
+  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,6 +13,7 @@
   "dependencies": {
     "discord.js": "^14.16.3",
     "dotenv": "^16.4.5",
-    "puppeteer": "^23.5.2"
+    "node-cron": "^3.0.3",
+    "puppeteer": "^23.5.1"
   }
 }
