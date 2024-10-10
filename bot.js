@@ -57,12 +57,12 @@ async function createRequiredGuildChannel(guild) {
   }
 }
 
-async function onDataScrape(channel) {
-  channel.send(
+// async function onDataScrape(channel) {
+//   channel.send(
     
-  )
+//   )
   
-} 
+// } 
 
 client.on("guildCreate", async (guild) => {
   await createRequiredGuildChannel(guild);
