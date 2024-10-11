@@ -47,7 +47,7 @@ const getCards = async () => {
       })
       .filter((arr) => arr !== null);
   });
-  
+
   console.log(data);
 
   await browser.close();
@@ -56,3 +56,5 @@ const getCards = async () => {
 };
 
 getCards();
+
+export default getCards;
