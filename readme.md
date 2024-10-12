@@ -7,7 +7,6 @@ This Discord bot scrapes data from **Unstop** and **Devfolio** to provide real-t
 - **Scraping Data from Unstop and Devfolio**: Fetches real-time information about upcoming hackathons.
 - **Discord Integration**: Sends the collected hackathon data to a specified Discord channel.
 - **Automated Updates**: Periodically checks for new hackathons and posts updates without manual intervention.
-- **Customizable Commands**: Allows users to interact with the bot to query specific hackathons, filter by dates, or receive notifications for certain types of events.
 
 ## Getting Started
 
