@@ -33,13 +33,8 @@ This Discord bot scrapes data from **Unstop** and **Devfolio** to provide real-t
 
 3. Set up your `.env` file to include the following environment variables:
     ```
-    DISCORD_BOT_TOKEN=your-discord-bot-token
-    CHANNEL_ID=your-discord-channel-id
+    TOKEN=your-discord-bot-token
     ```
-
-4. (Optional) Set up scraping configurations:
-    - If APIs are available for Unstop and Devfolio, set up API keys in the `.env` file.
-    - Otherwise, the bot will rely on web scraping to fetch information.
 
 ### Usage
 
@@ -54,26 +49,13 @@ This Discord bot scrapes data from **Unstop** and **Devfolio** to provide real-t
 
 3. The bot will automatically begin scraping hackathon data and posting it to the specified Discord channel.
 
-### Commands
 
-| Command       | Description                                            |
-| ------------- | ------------------------------------------------------ |
-| `/hackathons` | Fetches and displays the upcoming hackathons.          |
-| `/hackathons [keyword]` | Searches for hackathons matching the keyword.  |
-| `/subscribe`  | Subscribes the user to updates on new hackathons.      |
-| `/unsubscribe`| Unsubscribes the user from hackathon updates.          |
-
-### Customization
-
-- You can modify the scraping logic in the `scraper.js` file to handle any changes in the structure of Unstop and Devfolio’s websites.
-- Set up intervals for scraping in the `config.js` file to adjust how frequently the bot fetches new data.
 
 ## Tech Stack
 
 - **Node.js**: Runtime environment for JavaScript.
 - **Discord.js**: Library for interacting with the Discord API.
-- **Cheerio**: Fast and flexible library for web scraping.
-- **Axios**: Promise-based HTTP client for making requests.
+- **puppeteer.js**: Fast and flexible library for web scraping.
 
 ## Contribution
 
