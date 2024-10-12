@@ -1,4 +1,5 @@
 import { EmbedBuilder } from "discord.js";
+import getCards from "../upstopScraper.js";
 
 function createHackEmbeds({
   title = "Hackathon",
@@ -22,18 +23,18 @@ function createHackEmbeds({
   return customEmbed;
 }
 
-export default async function SendingDataToChannel(client) {
-  if (!hackAnnouncementsChannelId) {
+export default async function SendingDataToChannel(client,) {
+  if (!client.hackAnnouncementsChannelId) {
     console.error("Channel ID is not set. Cannot send data.");
     return;
   }
 
-  const channel = await client.channels.fetch(hackAnnouncementsChannelId);
+  const channel = await client.channels.fetch(client.hackAnnouncementsChannelId);
 
-  if (!channel) {
-    console.error("Channel does not exist");
-    return;
-  }
+  // if (!channel) {
+  //   console.error("Channel does not exist");
+  //   return;
+  // }
 
   const listOfHacks = await getCards();
   await listOfHacks.map((Hackinfo) => {

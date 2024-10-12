@@ -1,9 +1,9 @@
-import createRequiredGuildChannel from "../utilis/createTextChannel";
+import createRequiredGuildChannel from "../utilis/createTextChannel.js";
 
 export default {
   name: "guildCreate",
   once: true,
-  async execute(guild) {
-    await createRequiredGuildChannelildChannel(guild);
+  async execute(guild , client) {
+    await createRequiredGuildChannel(guild , client);
   },
 };
