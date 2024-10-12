@@ -37,9 +37,13 @@ const getCards = async () => {
 
         let daysLeft = "Date not available";
         if (daysLeftElem.length === 2) {
-          daysLeft = daysLeftElem[1]?.innerText.trim() || "Date not available";
+          daysLeft =
+            daysLeftElem[1]?.innerText.split("\n")[0].trim() ||
+            "Date not available";
         } else if (daysLeftElem.length === 1) {
-          daysLeft = daysLeftElem[0]?.innerText.trim() || "Date not available";
+          daysLeft =
+            daysLeftElem[0]?.innerText.split("\n")[0].trim() ||
+            "Date not available";
         }
         const imgSrc =
           event.querySelector("img")?.getAttribute("src") || "No Image";
@@ -54,6 +58,5 @@ const getCards = async () => {
 
   return data;
 };
-
 
 export default getCards;
