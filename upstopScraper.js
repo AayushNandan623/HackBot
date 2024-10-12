@@ -55,6 +55,5 @@ const getCards = async () => {
   return data;
 };
 
-getCards();
 
 export default getCards;
