@@ -58,5 +58,4 @@ const getCards = async () => {
 
   return data;
 };
-
 export default getCards;
