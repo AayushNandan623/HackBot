@@ -24,7 +24,7 @@ export default {
       client.hackAnnouncementsChannelId = Reqchannel.id;
 
       if (client.hackAnnouncementsChannelId) {
-        console.log("found and sned");
+        console.log("Channel found and Task scheduled");
         fetchDataJob(client);
       } else {
         await createRequiredGuildChannel(guild, client);

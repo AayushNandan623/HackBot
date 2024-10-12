@@ -65,6 +65,3 @@ Feel free to open issues and pull requests if you want to contribute to this pro
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
----
-
-This file provides the necessary details for others to understand and use your project on GitHub. Let me know if you'd like to make any changes!
