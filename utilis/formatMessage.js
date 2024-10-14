@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from "discord.js";
 import getCards from "../upstopScraper.js";
 
 function createHackEmbeds({
@@ -17,8 +17,8 @@ function createHackEmbeds({
         name: "Instutuion",
         value: institution,
       },
-      { name: "⏰", value: daysLeft + " Days left" , inline: true },
-      { name: "💸", value: "Rs."+ prize, inline: true }
+      { name: "⏰", value: daysLeft + " Days left", inline: true },
+      { name: "💸", value: "Rs." + prize, inline: true }
     );
 
   return customEmbed;
@@ -34,14 +34,17 @@ export default async function SendingDataToChannel(client) {
     client.hackAnnouncementsChannelId
   );
 
-  // if (!channel) {
-  //   console.error("Channel does not exist");
-  //   return;
-  // }
-
   const listOfHacks = await getCards();
+
   await listOfHacks.map((Hackinfo) => {
     let embed = createHackEmbeds(Hackinfo);
-    channel.send({ embeds: [embed] });
+    let visitPageButton = new ButtonBuilder()
+      .setLabel("visit page")
+      .setURL(`https://unstop.com/hackathons/${Hackinfo.id}`)
+      .setStyle("Link");
+
+    let row = new ActionRowBuilder().addComponents(visitPageButton);
+
+    channel.send({ embeds: [embed], components: [row] });
   });
 }

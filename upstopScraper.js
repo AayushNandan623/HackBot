@@ -18,6 +18,8 @@ const getCards = async () => {
     );
     return eventCards
       .map((event) => {
+        const id = event.parentElement.id.slice(4)
+
         const title =
           event.querySelector(".double-wrap")?.innerText.trim() || "N/A";
         if (title === "N/A") {
@@ -47,7 +49,7 @@ const getCards = async () => {
         }
         const imgSrc =
           event.querySelector("img")?.getAttribute("src") || "No Image";
-        return { title, institution, prize, daysLeft, imgSrc };
+        return { title, institution, prize, daysLeft, imgSrc, id };
       })
       .filter((arr) => arr !== null);
   });
@@ -58,4 +60,6 @@ const getCards = async () => {
 
   return data;
 };
+
+getCards();
 export default getCards;
