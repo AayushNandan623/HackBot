@@ -1,3 +1,4 @@
+import { InteractionWebhook } from "discord.js";
 import puppeteer from "puppeteer";
 export default async function devFolioHackathon() {
   const browser = await puppeteer.launch({
@@ -23,22 +24,32 @@ export default async function devFolioHackathon() {
       const titleElement = card.querySelector(".oSdsf");
       const title = titleElement ? titleElement.innerText.trim() : "N/A";
 
-      // const dateElement = card.querySelector(".");
-      // const date = dateElement
-      //   ? dateElement.innerText.trim()
-      //   : "Date not available";
+      const themeElement = card.querySelector(".bnveKZ");
+      const theme = themeElement
+        ? themeElement.innerText.trim()
+        : "theme not available";
 
-      // const prizeElement = card.querySelector("");
-      // const prize = prizeElement ? prizeElement.innerText.trim() : "No prize";
+        const dateElement = card.querySelector(".gWTYl")
+        const dateText = dateElement ? dateElement.innerText.trim() : "Date not avaliable";
+        const dateMatch = dateText.match(/\d{2}\/\d{2}\/\d{2,4}/);
+        const date = dateMatch ? dateMatch[0] : "Date not available";
 
-      // const innerText = card.innerText;
-      // const mode = innerText.includes("Online")
-      //   ? "Online"
-      //   : innerText.includes("Offline")
-      //   ? "Offline"
-      //   : "Not specified";
 
-      return { title };
+        const modeElement = card.querySelector(".ifkmYk");
+        const mode = modeElement ? modeElement.innerText.trim() : "Mode not avaliable";
+       
+        // const socialmediaElement = card.querySelector(".kTVrbf a");
+        // const socialmedia = socialmediaElement ? socialmediaElement.href : "Link not available";
+
+        const linkElement= card.querySelector(".kIgbEq a");
+        const links = linkElement ? linkElement.href : "link not avaliable";
+
+      const applyElement = card.querySelector(".gmACUu");
+      const apply = applyElement ? applyElement.innerText.trim() : "No info";
+
+  
+
+      return { title , theme ,date,mode,links , apply};
     });
   });
   await browser.close();
