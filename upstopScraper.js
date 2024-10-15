@@ -18,7 +18,7 @@ const getCards = async () => {
     );
     return eventCards
       .map((event) => {
-        const id = event.parentElement.id.slice(4)
+        const id = event.parentElement.id.slice(4);
 
         const title =
           event.querySelector(".double-wrap")?.innerText.trim() || "N/A";
@@ -61,5 +61,29 @@ const getCards = async () => {
   return data;
 };
 
-getCards();
-export default getCards;
+const getMoreDetails = async ({ link }) => {
+  const browser = await puppeteer.launch({
+    headless: false,
+    defaultViewport: false,
+  });
+
+  const page = await browser.newPage();
+
+  await page.goto(`https://unstop.com/hackathons/${link}`, {
+    waitUntil: "networkidle2",
+  });
+
+  const data = await page.evaluate(() => {
+    const eventDetails = document.querySelector(".about_game");
+
+    const aboutEventInString = Array.from(eventDetails.querySelectorAll("p,ul"))
+      .map((paragraph) => paragraph.textContent.trim())
+      .join("\n");
+
+    return aboutEventInString;
+  });
+  await browser.close();
+  return data;
+};
+
+export default { getCards, getMoreDetails };

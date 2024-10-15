@@ -1,5 +1,7 @@
 import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from "discord.js";
-import getCards from "../upstopScraper.js";
+import getUnstop from "../upstopScraper.js";
+
+const { getCards } = getUnstop;
 
 function createHackEmbeds({
   title = "Hackathon",
@@ -43,7 +45,15 @@ export default async function SendingDataToChannel(client) {
       .setURL(`https://unstop.com/hackathons/${Hackinfo.id}`)
       .setStyle("Link");
 
-    let row = new ActionRowBuilder().addComponents(visitPageButton);
+    let AiSumUpButton = new ButtonBuilder()
+      .setLabel("See more")
+      .setStyle("Primary")
+      .setCustomId(`See_More:${Hackinfo.id}`);
+
+    let row = new ActionRowBuilder().addComponents(
+      visitPageButton,
+      AiSumUpButton
+    );
 
     channel.send({ embeds: [embed], components: [row] });
   });

@@ -15,10 +15,7 @@ const __dirname = path.dirname(__filename);
 
 //seting schedule job
 
-
 client.hackAnnouncementsChannelId = null;
-
-
 
 console.log(__dirname);
 //loading events
@@ -33,13 +30,9 @@ for (const file of eventsFile) {
   const eventModule = await import(fileUrl);
   const event = eventModule.default;
   if (event.once) {
-    client.once(event.name, (...args) =>
-      event.execute(...args, client)
-    );
+    client.once(event.name, (...args) => event.execute(...args, client));
   } else {
-    client.on(event.name, (...args) =>
-      event.execute(...args, client)
-    );
+    client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
 
